@@ -2,11 +2,10 @@ import './App.css';
 
 import React from 'react';
 
-import Login from './pages/auth/Login';
+import MainRoutes from './routing/MainRoutes';
 
 function App() {
-  const [user, setUser] = React.useState(null);
-  return <Login />;
+  return <MainRoutes />;
 }
 
 export default App;
