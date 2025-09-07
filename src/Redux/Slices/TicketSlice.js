@@ -36,6 +36,32 @@ export const getAllTicketsforTheUser = createAsyncThunk(
   }
 );
 
+
+export const updateTicket = createAsyncThunk(
+  'tickets/updateTicket',
+  async (ticket) => {
+    try {
+      const response = axiosInstance.patch(
+        `ticket/${ticket._id}`,
+        ticket, // req body
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token'),
+          },
+        }
+      );
+      toast.promise(response, {
+        success: 'Successfully updated the ticket',
+        loading: 'Updating the ticket',
+        error: 'Something went wrong',
+      });
+      return await response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const ticketSlice = createSlice({
   name: 'tickets',
   initialState,
