@@ -15,7 +15,7 @@ function Card({
   function onCardClick() {
     navigate(`/dashboard?status=${titleText}`);
   }
-
+  const statusPercent = status * 100;
   return (
     <div
       onClick={onCardClick}
@@ -33,7 +33,7 @@ function Card({
           className={`radial-progress ${fontColor}`}
           style={{ '--value': status * 100 }}
         >
-          {status * 100}%
+          {statusPercent.toString().substring(0, 4)}%
         </div>
       </div>
     </div>
